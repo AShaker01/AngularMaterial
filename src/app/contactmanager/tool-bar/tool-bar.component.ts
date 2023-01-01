@@ -11,7 +11,8 @@ import { NewContactDialogComponent } from '../new-contact-dialog/new-contact-dia
 })
 export class ToolBarComponent implements OnInit {
   @Output() toggleSidenav = new EventEmitter<void>();
-
+  @Output() toggleTheme = new EventEmitter<void>();
+  @Output() toggleDir = new EventEmitter<void>();
   constructor(
     private dialog: MatDialog,
     private snackBar: MatSnackBar,
@@ -24,7 +25,6 @@ export class ToolBarComponent implements OnInit {
     let dialogRef = this.dialog.open(NewContactDialogComponent, {
       width: '450px'
     });
-
     dialogRef.afterClosed().subscribe((result: any) => {
       console.log('The dialog was closed', result)
 
@@ -36,7 +36,6 @@ export class ToolBarComponent implements OnInit {
       }
     })
   }
-
   openSnackBar(message: string, action: string): MatSnackBarRef<SimpleSnackBar> {
     return this.snackBar.open(message, action, {
       duration: 5000,
